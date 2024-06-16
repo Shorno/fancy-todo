@@ -37,6 +37,19 @@ export default function Main() {
         })
         setItems(newItems)
     }
+    const handleDeleteItem = (id) => {
+        const newItems = items.filter((item) => item.id !== id);
+        setItems(newItems)
+    }
+    const handleToggleItem = (id) => {
+        const newItems = items.map((item) => {
+            if (item.id === id) {
+                return {...item, packed: !item.packed}
+            }
+            return item;
+        })
+        setItems(newItems)
+    }
 
 
     return (
@@ -44,7 +57,10 @@ export default function Main() {
             <section className={"h-[70%] w-[60%] mx-auto rounded-xl"}>
                 <Header/>
                 <div className={"flex w-full h-[90%]"}>
-                    <ItemList items={items}/>
+                    <ItemList
+                        handleDeleteItem={handleDeleteItem}
+                        handleToggleItem={handleToggleItem}
+                        items={items}/>
                     <Sidebar
                         handleAddItem={handleAddItem}
                         handleRemoveAllItems={handleRemoveAllItems}
