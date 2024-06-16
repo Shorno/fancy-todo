@@ -1,7 +1,11 @@
-export default  function Button({children, type}){
+export default function Button({children, buttonType, onClick}) {
     return (
         <>
-        <button className={`mt-5 bg-[#212121] text-white w-full rounded-md py-2 ${type === "secondary" ? "bg-[#222831]"  : ""}`}>{children}</button>
+            <button
+                onClick={onClick}
+                className={`mt-5 bg-[#212121] text-white w-full rounded-md py-2 ${buttonType === "secondary" ? "bg-[#222831]" : ""}`}>
+                {children}
+            </button>
         </>
     )
 }
